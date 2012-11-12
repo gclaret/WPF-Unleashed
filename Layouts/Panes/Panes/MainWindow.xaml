@@ -1,0 +1,130 @@
+﻿<Window x:Class="Panes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Application with dockable panes">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Edit"/>
+            <MenuItem Header="View"/>
+            <MenuItem Header="Project"/>
+            <MenuItem Header="Build"/>
+            <MenuItem Header="Debug"/>
+            <MenuItem Header="Window"/>
+            <MenuItem Header="Help"/>
+        </Menu>
+        <StackPanel Name="ButtonBar" Orientation="Horizontal" DockPanel.Dock="Right">
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </StackPanel.LayoutTransform>
+            <Button Name="button1" MouseEnter="button1_MouseEnter">
+                Toolbox
+            </Button>
+            <Button Name="button2" MouseEnter="button2_MouseEnter">
+                Solution Explorer
+            </Button>
+        </StackPanel>
+        <Grid Name="parentGrid" Grid.IsSharedSizeScope="True">
+                <!-- Layer 0 -->
+                <Grid Name="layer0" MouseEnter="layer0_MouseEnter">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="150"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Background="Black" Foreground="White" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" FontStyle="Italic" >
+                    <Label.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2"/>
+                    </Label.LayoutTransform>
+                        Start Page
+                    </Label>
+                    <GroupBox Grid.Row="1" Grid.Column="0" Header="Recent Projects...">
+                    <ListBox>
+                        <ListBoxItem>Project #1</ListBoxItem>
+                        <ListBoxItem>Project #2</ListBoxItem>
+                        <ListBoxItem>Project #3</ListBoxItem>
+                    </ListBox>
+                    </GroupBox>
+                    <GroupBox Grid.Row="2" Grid.Column="0" Header="Getting Started">
+                    <ListBox>
+                        <ListBoxItem>Help #1</ListBoxItem>
+                        <ListBoxItem>Help #2</ListBoxItem>
+                        <ListBoxItem>Help3 #3</ListBoxItem>
+                    </ListBox>
+                    </GroupBox>
+                    <GroupBox Grid.Row="3" Grid.Column="0" Header="Headlines">....</GroupBox>
+                    <GridSplitter Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" Width="5" />
+                    <GroupBox Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Header="Online Articles...">
+                    <ListBox>
+                        <ListBoxItem>Article #1</ListBoxItem>
+                        <ListBoxItem>Article #2</ListBoxItem>
+                        <ListBoxItem>Article #3</ListBoxItem>
+                        <ListBoxItem>Article #4</ListBoxItem>
+                    </ListBox>
+                    </GroupBox>
+                </Grid>
+                <!-- Layer 1 -->
+                <Grid Name="layer1" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition SharedSizeGroup="column1" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1" MouseEnter="Grid_MouseEnter" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Row="0">
+                        <Button Name="panel1Pin" Width="26" DockPanel.Dock="Right" Click="panel1Pin_Click">
+                            Pin
+                        </Button>
+                        <TextBlock Padding="8" TextTrimming="CharacterEllipsis" DockPanel.Dock="Left">
+                            ToolBox
+                        </TextBlock>
+                    </DockPanel>
+                    <ListBox Grid.Row="1">
+                        <ListBoxItem>Tool 1</ListBoxItem>
+                        <ListBoxItem>Tool 2</ListBoxItem>
+                        <ListBoxItem>Tool 3</ListBoxItem>
+                    </ListBox>
+                    </Grid>
+                    <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Left"/>
+                </Grid>
+                <!-- Layer 2 -->
+                <Grid Name="layer2" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition SharedSizeGroup="column2" Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1" MouseEnter="Grid_MouseEnter_1" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Row="0">
+                        <Button Name="panel2Pin" Width="26" DockPanel.Dock="Right" Click="panel2Pin_Click">
+                            PIN
+                        </Button>
+                        <TextBlock Padding="8" TextTrimming="CharacterEllipsis" DockPanel.Dock="Left">
+                            Solution Explorer
+                        </TextBlock>
+                    </DockPanel>
+                    <TreeView Grid.Row="2">
+                        <TreeViewItem Header="My Solution">
+                            <TreeViewItem Header="Project #1"/>
+                            <TreeViewItem Header="Project #2"/>
+                            <TreeViewItem Header="Project #3"/>
+                        </TreeViewItem>
+                    </TreeView>
+                    </Grid>
+                    <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Left"/>
+                </Grid>
+        </Grid>        
+    </DockPanel>
+</Window>
