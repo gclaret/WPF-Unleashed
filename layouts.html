@@ -31,23 +31,45 @@
         <hr>
 
         <section id="main_content">
-          <h3>Introduction</h3>
+          <h3>Layouts with Panels</h3>
 
 <p>
-For a self-training project, I decided to read <a href="http://www.informit.com/store/wpf-4-unleashed-9780672331190">WPF 4 Unleashed</a>, by author Adam Nathan, a senior developer of WPF iteself.
-</p>
-<p>
-After doing a small project on WPF, I felt like some concepts were still a bit weak, and decided that, by reading this book, and following its examples, I would get a much more in depth understanding of how WPF works.
-</p>
-<p>
-Every small project done as an example, will be hosted on the above repository, and be accompanied of a page, with a brief description of which concepts were tackled in the example.
-</p>
-
-<h3>Sections</h3>
-
+This project can be found in /Layouts. In this example, the following concepts are applied:
 <ul>
-<li><a href="layouts.html"> Layouts with Panels</a></li>
-</ul>
+<li>StackPanel</li>
+<li>DockPanel</li>
+<li>Grid</li>
+<li>Handling content flow</li>
+</p>
+
+<p>
+This is a screenshot of the application. It contains a top menu, a Grid for the main content, and 2 buttons on the side.
+<br>
+<center>
+<img src="images/layout/screen1.png">
+<font size=1.2px>Img 1. Screenshot of the application.</font>
+</center>
+</p>
+<p>
+The two side buttons, have a transformation applied to them <a href="https://github.com/gclaret/WPF-Unleashed/blob/master/Layouts/Panes/Panes/MainWindow.xaml#L17-#L19">(90degree rotation)</a>, and when <a href="https://github.com/gclaret/WPF-Unleashed/blob/master/Layouts/Panes/Panes/MainWindow.xaml.cs#L40-#L47">hovered over</a>, their respective content is shown.
+<br>
+<center>
+<img src="images/layout/screen2.png">
+<font size=1.2px>Img 2. Screenshot of the application with mouse over a button.</font>
+</center>
+</p>
+<p>
+When hovering over a button, the user can <a href="https://github.com/gclaret/WPF-Unleashed/blob/master/Layouts/Panes/Panes/MainWindow.xaml.cs#L76-#L82">"Pin"</a> this window onto the main panel, either one or both at the time, and unpin them whenever he wishes to.
+<br>
+<center>
+<img src="images/layout/screen3.png">
+<font size=1.2px>Img 3. Screenshot of the application with both panels pinned to the main one.</font>
+</center>
+</p>
+
+
+
+<a href="index.html">Back to Index</a>
 
 
         </section>
