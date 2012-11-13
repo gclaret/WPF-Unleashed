@@ -1,0 +1,46 @@
+﻿<Window x:Class="Annotations.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:a="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
+        Title="DocumentReader with Annotations" Height="425" Width="507" Initialized="Window_Initialized" Closed="Window_Closed" ResizeMode="NoResize">
+    <StackPanel>    
+        <StackPanel Orientation="Horizontal">
+            <Label>Annotations:</Label>
+            <Button Margin="2" Command="a:AnnotationService.CreateTextStickyNoteCommand" CommandTarget="{Binding ElementName=reader}" Content="Create Sticky Note" />
+            <Button Margin="2" Command="a:AnnotationService.DeleteStickyNotesCommand" CommandTarget="{Binding ElementName=reader}" Content="Remove Note" />
+            <Button Margin="2" Command="a:AnnotationService.CreateHighlightCommand" CommandTarget="{Binding ElementName=reader}" Content="Yellow Highlight" />
+            <Button Margin="2" Command="a:AnnotationService.ClearHighlightsCommand" CommandTarget="{Binding ElementName=reader}" Content="Remove Highlight" />
+        </StackPanel>    
+        <FlowDocumentReader x:Name="reader">
+            <FlowDocument>
+                <Section LineHeight="2" Foreground="DarkRed" >
+                    <Paragraph FontSize="25">In Flanders Field</Paragraph>
+                    <Paragraph FontSize="18">Canadian poem, written during WWI</Paragraph>
+                </Section>
+                <Section FontSize="12">
+                    <Paragraph>
+                        Flanders fields the poppies blow
+                        <LineBreak/>Between the crosses, row on row,
+                        <LineBreak/>That mark our place; and in the sky
+                        <LineBreak/>The larks, still bravely singing, fly
+                        <LineBreak/>Scarce heard amid the guns below.
+                    </Paragraph>
+                    <Paragraph>
+                        <LineBreak/>We are the Dead. Short days ago
+                        <LineBreak/>We lived, felt dawn, saw sunset glow,
+                        <LineBreak/>Loved and were loved, and now we lie
+                        <LineBreak/>In Flanders fields.
+                    </Paragraph>
+                    <Paragraph>
+                        <LineBreak/>Take up our quarrel with the foe:
+                        <LineBreak/>To you from failing hands we throw
+                        <LineBreak/>The torch; be yours to hold it high.
+                        <LineBreak/>If ye break faith with us who die
+                        <LineBreak/>We shall not sleep, though poppies grow
+                        <LineBreak/>In Flanders fields.
+                    </Paragraph>
+                </Section>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </StackPanel>
+</Window>
