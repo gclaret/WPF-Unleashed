@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Wpf Unleashed by gclaret</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Wpf Unleashed 4</h1>
+          <h2></h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/gclaret/WPF-Unleashed/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/gclaret/WPF-Unleashed/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/gclaret/WPF-Unleashed" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>Styles & Templates</h3>
+
+<p>
+This project can be found in /Styles. In this example, the following concepts are applied:
+<ul>
+<li>Styles</li>
+<li>Templates</li>
+<li>Resource Dictionaries</li>
+</p>
+
+<p>
+After building a few WPF applications, I had the curosity... How can I make things look different?
+<br> I knew that controls have properties (like Background, Font Size, etc..) and by changing them, you can get a new visual style. But doing this for every control
+in their XAML seemed to be a very hard job, and very error-prone: I was looking for something similar to what CSS does for HTML.
+
+<center>
+<img src="images/styles/screen1.png">
+<br><font size=1.2px>Img 1. Screenshot of the application.</font>
+</center>
+
+</p>
+<p>
+<h3>WPF Styles </h3>
+It didn't take long to realize, that the WPF Styles were what I was looking for. There are 2 different approaches to styles:
+<br><br>
+You can declare them in the &lt;Window.Resources&gt; ..... &lt;/Window.Resources&gt; , but this approach isn't very convenient, because if you want to have a consistent look across your whole application, you will have copy & paste the same code several times !
+<br><br>
+Another way to do this, is by using a Resource Dictionary. Using this method, we can style all our application, without having any duplicated code.
+
+To create a Dictionary, we can right-click our project -> add -> new item, and select Resource Dictionary. Before we can use this in our application, we have to reference it from our App.xaml.
+</p>
+<p>
+In App.xaml:
+<pre><code>&lt;Application.Resources&gt;
+	&lt;ResourceDictionary Source="myDiccionary.xaml"/&gt;
+&lt;/Application.Resources&gt;
+</pre></code>
+<br>
+Now that we have it referenced, we can acces anything declared in the Dictionary from our application.
+</p>
+
+<p>
+<h3>Defining Types</h3>
+In this Dictionary, we can declare Animations, Brushes as well as Styles. Lets see a few examples of these.
+
+</p>
+<p>
+<h4>Brush</h4>
+Here is a declaration of a very simple brush. It has a Key (thats the name by which we can call this brush from our application), a StartPoint and an EndPoint. It can contain as many GradientStops as we wish, which determine the color we obtain from this Brush.
+
+<pre><code>&lt;LinearGradientBrush x:Key="myBrush" StartPoint="0,0" EndPoint="1,1"&gt;
+    &lt;GradientStop Offset="0" Color="#FF333344" /&gt;
+    &lt;GradientStop Offset="1" Color="#FF666677" /&gt;
+&lt;/LinearGradientBrush&gt;
+</pre></code>
+</p>
+
+<p>
+<h4>Animation</h4>
+The animations are pretty easy to implement also. We have a Key and a type of animation (in this case, DoubleAnimation, meaning that this returns a double value).
+We also need to set at what time the animation will start (in this case, 0s after the event) and for how long. Which property of which target is gonna listen to the double changing also needs to be specified.
+<br>We will see how to call this animation from a trigger later on. From now on, the difinition is enough.
+<pre><code>&lt;Storyboard x:Key="GlowIn"&gt;
+    &lt;DoubleAnimation x:Name="AnimGlow" BeginTime="00:00:00"
+	Storyboard.TargetName="targetName" Duration="00:00:00.250"
+	From="0" To="1" Storyboard.TargetProperty="Opacity"&gt;
+    &lt;/DoubleAnimation&gt;
+&lt;/Storyboard&gt;
+</pre></code>
+</p>
+
+
+<a href="index.html">Back to Index</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="styles2.html">Next ---></a> 
+
+
+        </section>
+
+        <footer>
+          Wpf Unleashed is maintained by <a href="https://github.com/gclaret">gclaret</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>

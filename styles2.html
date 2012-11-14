@@ -31,25 +31,38 @@
         <hr>
 
         <section id="main_content">
-          <h3>Introduction</h3>
+          <h3>Creating a Style</h3>
 
 <p>
-For a self-training project, I decided to read <a href="http://www.informit.com/store/wpf-4-unleashed-9780672331190">WPF 4 Unleashed</a>, by author Adam Nathan, a senior developer of WPF iteself.
+For this example, lets build a Style for a Button! The syntax is as following:
+<pre><code>&lt;Style x:Key="styleKey" TargetType="{x:Type Button}"&gt;
+	....
+	&lt;Setter Property="Background" Value="Black" /&gt;
+	&lt;Setter Property="Foreground" Value="White" /&gt;
+	....
+&lt;/Style&gt;
+</pre></code>
 </p>
 <p>
-After doing a small project on WPF, I felt like some concepts were still a bit weak, and decided that, by reading this book, and following its examples, I would get a much more in depth understanding of how WPF works.
+The style has a key for referencing, and its optional to specify a TargetType. What this does, if specified, is to limit the type of controls that can use this style. For this example, lets restrict this to Buttons only.
+<br> Another optional property, is BasedOn="", which if specified, allows us to inherit behavior from another style!.
+
+<br><br>In the body of the style, we can have has many Setters as we need, specifing the property it affects, and their desired value.
 </p>
+
 <p>
-Every small project done as an example, will be hosted on the above repository, and be accompanied of a page, with a brief description of which concepts were tackled in the example.
+With this simple style, if we have a button in out XAML, by simply setting its Style to ="{StaticResource styleKey}", we have our style set to the button!
 </p>
 
-<h3>Sections</h3>
+<p>
+<h3>Template</h3>
+For advanced customization of our Controls, we can override the default template! An example of this can be seen in the code <a href="https://github.com/gclaret/WPF-Unleashed/blob/master/Styles/Styles/StylesDiccionary.xaml#L36-#L84">Here</a>. I wont get into much detail, but by simply using a Grid, we can make our button look as we wish to make it look!
+<br><br>And also, with the use of <a href="https://github.com/gclaret/WPF-Unleashed/blob/master/Styles/Styles/StylesDiccionary.xaml#L77-#L81">triggers</a>, all the cool looking effects when we hover over a Buttonm, or press it, can be achieved.
+</p>
 
-<ul>
-<li><a href="layouts.html"> Layouts with Panels</a></li>
-<li><a href="annotations.html"> DocumentReader & Annotations</a></li>
-<li><a href="styles.html"> Styles & Templates </a></li>
-</ul>
+
+
+<a href="styles.html"><--- Previous</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="index.html">Back to Index</a> 
 
 
         </section>
