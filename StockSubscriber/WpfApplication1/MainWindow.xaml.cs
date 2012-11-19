@@ -1,4 +1,5 @@
-﻿using StockSubscriber.ViewModel;
+﻿using Microsoft.Practices.Unity;
+using StockSubscriber.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,15 +25,21 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Source from which we get our Quote Data
-        private readonly RandomQuoteSource _quoteSource = new RandomQuoteSource();
         private MainViewVm _vm;
+
+        [Dependency]
+        public MainViewVm VM
+        {
+            set
+            {
+                _vm = value;
+                this.DataContext = _vm;
+            }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
-            _vm = new MainViewVm(_quoteSource);
-            this.DataContext = _vm;
         }
 
     }
