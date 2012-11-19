@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockSubscriber.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -25,29 +26,20 @@ namespace WpfApplication1
     {
         // Source from which we get our Quote Data
         private readonly RandomQuoteSource _quoteSource = new RandomQuoteSource();
-
-        // All the Quotes that we are subscribed to
-        private ObservableCollection<Quote> _quotes = new ObservableCollection<Quote>();
+        private MainViewVm _vm;
 
         public MainWindow()
         {
             InitializeComponent();
-            _quoteSource.QuoteArrived += new Action<Quote>(_quoteSource_QuoteArrived);
-            this.DataContext = _quotes;
+            _vm = new MainViewVm(_quoteSource);
+            this.DataContext = _vm;
         }
 
-        void _quoteSource_QuoteArrived(Quote obj)
-        {
-            Action dispatchAction = () => _quotes.Insert(0, obj);
-            this.Dispatcher.BeginInvoke(dispatchAction);
-        }
 
         // Not a good idea to have all this logic in the code-behind, but still functional
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string symbol = symbolTxt.Text;
-            _quoteSource.Subscribe(symbol);
-            lastTxt.Content = symbol;
+            _vm.Subscribe();
         }
     }
 }
