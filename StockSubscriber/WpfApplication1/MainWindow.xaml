@@ -6,13 +6,13 @@
         <StackPanel>
             <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal">
                 <Label Content="Insert Stock: " Margin="0,5,20,5" />
-                <TextBox Text="{Binding Symbol}"  Width="100" Margin="0,5,0,5" />
+                <TextBox Text="{Binding Path=Symbol, UpdateSourceTrigger=PropertyChanged}"  Width="100" Margin="0,5,0,5" />
             </StackPanel>
             <StackPanel  HorizontalAlignment="Center" Orientation="Horizontal">
                 <Label Content="Last stock entered:" />
                 <Label Content="{Binding LastSymbol}" />
             </StackPanel>
-            <Button Content="Subscribe" Width="70" Click="Button_Click_1"/>
+            <Button Content="Subscribe" Width="70" Command="{Binding SubscribeCommand}"/>
             
             <ListView Margin="0,25,0,0" ItemsSource="{Binding Quotes}" MaxHeight="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
                 <ListView.View>

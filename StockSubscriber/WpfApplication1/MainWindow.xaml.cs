@@ -35,11 +35,5 @@ namespace WpfApplication1
             this.DataContext = _vm;
         }
 
-
-        // Not a good idea to have all this logic in the code-behind, but still functional
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            _vm.Subscribe();
-        }
     }
 }
